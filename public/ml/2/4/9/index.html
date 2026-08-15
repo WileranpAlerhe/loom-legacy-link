@@ -120,30 +120,31 @@
             .card .num { position:absolute; z-index:3; left:7%; right:7%; top:57.5%;
                 font-size: 5.6cqw; font-weight:600; letter-spacing: .55cqw; white-space:nowrap;
                 color: var(--fg,#fff); text-shadow: 0 .3cqw .6cqw rgba(0,0,0,.55); }
-            .card .holder { position:absolute; z-index:3; left:7%; right:7%; top:69%;
-                font-size: 4.4cqw; letter-spacing: .35cqw; text-transform:uppercase; white-space:nowrap;
+            .card .holder { position:absolute; z-index:3; left:7%; right:auto; top:68%;
+                max-width: 62%; text-align: left;
+                font-size: 4cqw; letter-spacing: .3cqw; text-transform:uppercase; white-space:nowrap;
                 overflow:hidden; text-overflow:ellipsis;
                 color: var(--fg,#fff); text-shadow: 0 .3cqw .6cqw rgba(0,0,0,.55); }
 
             /* ===== TEMAS (apenas cor do texto sobreposto) ===== */
             .theme-teal  { --fg:#ffffff; }
             .theme-red   { --fg:#ffffff; }
-            .theme-black { --fg:#e9d9a6; }
-            .theme-green { --fg:#f3e4bd; }
+            .theme-black { --fg:#ffffff; }
+            .theme-green { --fg:#ffffff; }
             .theme-blue  { --fg:#ffffff; }
         </style>
 
         <div class="color-options" id="colorOptions">
-            <div class="color-option selected" data-theme="teal"  style="background: linear-gradient(135deg,#35bdb4,#0f8a86);" onclick="changeCardTheme(this,'teal')"></div>
-            <div class="color-option" data-theme="red"   style="background: linear-gradient(105deg,#a4132a 50%,#121212 50%);" onclick="changeCardTheme(this,'red')"></div>
-            <div class="color-option" data-theme="black" style="background: linear-gradient(135deg,#2a2a2a,#000 70%);" onclick="changeCardTheme(this,'black')"></div>
-            <div class="color-option" data-theme="green" style="background: linear-gradient(135deg,#0d6b45,#063b26);" onclick="changeCardTheme(this,'green')"></div>
-            <div class="color-option" data-theme="blue"  style="background: linear-gradient(135deg,#1b56b8,#08214d);" onclick="changeCardTheme(this,'blue')"></div>
+            <div class="color-option selected" data-theme="blue"  style="background: linear-gradient(135deg,#1b56b8,#08214d);" onclick="changeCardTheme(this,'blue')"></div>
+            <div class="color-option" data-theme="black" style="background: linear-gradient(135deg,#3a3a3a,#0d0d0d 70%);" onclick="changeCardTheme(this,'black')"></div>
+            <div class="color-option" data-theme="teal"  style="background: linear-gradient(135deg,#1fa9a0,#0b6f6b);" onclick="changeCardTheme(this,'teal')"></div>
+            <div class="color-option" data-theme="red"   style="background: linear-gradient(135deg,#b01327,#6b0a17);" onclick="changeCardTheme(this,'red')"></div>
+            <div class="color-option" data-theme="green" style="background: linear-gradient(135deg,#0f7a48,#064b2b);" onclick="changeCardTheme(this,'green')"></div>
         </div>
 
         <div class="card-wrap">
-            <div class="card theme-teal" id="cardEl">
-                <img class="art" id="cardArt" src="/assets/card-teal.png" alt="Cartão Lumio">
+            <div class="card theme-blue" id="cardEl">
+                <img class="art" id="cardArt" src="/assets/card-blue.png" alt="Cartão Lumio">
                 <div class="num">0000 0000 0000 0000</div>
                 <div class="holder" id="cardName">Nome do cliente</div>
                 <div class="shine"></div>
@@ -184,7 +185,7 @@
             function changeCardTheme(el, theme){
                 var card = document.getElementById('cardEl');
                 card.className = 'card theme-' + theme;
-                document.getElementById('cardArt').src = CARD_ART[theme] || CARD_ART.teal;
+                document.getElementById('cardArt').src = CARD_ART[theme] || CARD_ART.blue;
                 document.querySelectorAll('#colorOptions .color-option').forEach(function(o){ o.classList.remove('selected'); });
                 el.classList.add('selected');
                 localStorage.setItem('cardTheme', theme);
