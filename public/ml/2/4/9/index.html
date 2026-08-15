@@ -185,7 +185,7 @@
             function changeCardTheme(el, theme){
                 var card = document.getElementById('cardEl');
                 card.className = 'card theme-' + theme;
-                document.getElementById('cardArt').src = CARD_ART[theme] || CARD_ART.teal;
+                document.getElementById('cardArt').src = CARD_ART[theme] || CARD_ART.blue;
                 document.querySelectorAll('#colorOptions .color-option').forEach(function(o){ o.classList.remove('selected'); });
                 el.classList.add('selected');
                 localStorage.setItem('cardTheme', theme);
