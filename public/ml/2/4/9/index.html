@@ -99,7 +99,7 @@
             .color-options { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 15px 0 20px; }
             .color-option { width: 44px; height: 44px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform .15s ease, border-color .15s ease; }
             .color-option:hover { transform: scale(1.08); }
-            .color-option.selected { border-color: #14315c; transform: scale(1.08); }
+            .color-option.selected { border-color: #0046FD; transform: scale(1.08); }
 
             /* ===== Cartão — imagem real, proporção 1.586:1 ===== */
             .card-wrap { margin: 10px auto 20px; max-width: 360px; width: 100%; }
@@ -110,19 +110,22 @@
                 font-family: 'Sora', sans-serif;
                 container-type: inline-size;
             }
-            .card .art { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; display:block; z-index:0; }
+            .card .art { position:absolute; inset:0; width:100%; height:100%; object-fit: contain; display:block; z-index:0;
+                opacity:0; transition: opacity .25s ease; }
+            .card .art.active { opacity:1; }
             .card .shine { position:absolute; top:0; left:-100%; width:55%; height:100%; z-index:4; pointer-events:none;
                 background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
                 animation: shine 4s infinite; }
             @keyframes shine { 0%{left:-100%} 40%{left:130%} 100%{left:130%} }
 
             /* dados sobrepostos — escalam com a largura do cartão (cqw) */
-            .card .num { position:absolute; z-index:3; left:7%; right:7%; top:57.5%;
-                font-size: 5.6cqw; font-weight:600; letter-spacing: .55cqw; white-space:nowrap;
+            .card .num { position:absolute; z-index:3; left:8%; right:8%; top:57%;
+                text-align: left;
+                font-size: 5.2cqw; font-weight:600; letter-spacing: .45cqw; white-space:nowrap;
                 color: var(--fg,#fff); text-shadow: 0 .3cqw .6cqw rgba(0,0,0,.55); }
-            .card .holder { position:absolute; z-index:3; left:7%; right:auto; top:68%;
-                max-width: 62%; text-align: left;
-                font-size: 4cqw; letter-spacing: .3cqw; text-transform:uppercase; white-space:nowrap;
+            .card .holder { position:absolute; z-index:3; left:8%; right:8%; top:70%;
+                text-align: left;
+                font-size: 3.8cqw; letter-spacing: .3cqw; text-transform:uppercase; white-space:nowrap;
                 overflow:hidden; text-overflow:ellipsis;
                 color: var(--fg,#fff); text-shadow: 0 .3cqw .6cqw rgba(0,0,0,.55); }
 
