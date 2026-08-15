@@ -151,7 +151,7 @@
     if (u.email && !$('[data-pix-email]').value) $('[data-pix-email]').value = u.email;
     if (u.phone && !$('[data-pix-phone]').value) $('[data-pix-phone]').value = maskPhone(u.phone);
     if (autoDefaults) {
-      if (!$('[data-pix-name]').value) $('[data-pix-name]').value = 'Cliente umio';
+      if (!$('[data-pix-name]').value) $('[data-pix-name]').value = 'Cliente Lumio';
       if (!$('[data-pix-doc]').value) $('[data-pix-doc]').value = maskCPF(randCPF());
       if (!$('[data-pix-email]').value) $('[data-pix-email]').value = slug($('[data-pix-name]').value)+'@gmail.com';
       if (!$('[data-pix-phone]').value) $('[data-pix-phone]').value = maskPhone(randPhone());
