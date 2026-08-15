@@ -147,7 +147,11 @@
 
         <div class="card-wrap">
             <div class="card theme-blue" id="cardEl">
-                <img class="art" id="cardArt" src="/assets/card-blue.png" alt="Cartão Lumio">
+                <img class="art active" data-theme="blue"  src="/assets/card-blue.png"  alt="Cartão Lumio azul">
+                <img class="art" data-theme="black" src="/assets/card-black.png" alt="Cartão Lumio preto">
+                <img class="art" data-theme="teal"  src="/assets/card-teal.png"  alt="Cartão Lumio verde-água">
+                <img class="art" data-theme="red"   src="/assets/card-red.png"   alt="Cartão Lumio vermelho">
+                <img class="art" data-theme="green" src="/assets/card-green.png" alt="Cartão Lumio verde">
                 <div class="num">0000 0000 0000 0000</div>
                 <div class="holder" id="cardName">Nome do cliente</div>
                 <div class="shine"></div>
@@ -176,31 +180,24 @@
                 } catch(e){}
             })();
 
-            var CARD_ART = {
-                teal:  '/assets/card-teal.png',
-                red:   '/assets/card-red.png',
-                black: '/assets/card-black.png',
-                green: '/assets/card-green.png',
-                blue:  '/assets/card-blue.png'
-            };
-            Object.keys(CARD_ART).forEach(function(k){ var i = new Image(); i.src = CARD_ART[k]; });
-
             function changeCardTheme(el, theme){
                 var card = document.getElementById('cardEl');
                 card.className = 'card theme-' + theme;
-                document.getElementById('cardArt').src = CARD_ART[theme] || CARD_ART.blue;
+                document.querySelectorAll('#cardEl .art').forEach(function(img){
+                    img.classList.toggle('active', img.getAttribute('data-theme') === theme);
+                });
                 document.querySelectorAll('#colorOptions .color-option').forEach(function(o){ o.classList.remove('selected'); });
-                el.classList.add('selected');
+                if (el) el.classList.add('selected');
                 localStorage.setItem('cardTheme', theme);
             }
 
 
-            window.addEventListener('load', function(){
+            (function(){
                 var saved = localStorage.getItem('cardTheme');
                 if (!saved) return;
                 var opt = document.querySelector('#colorOptions .color-option[data-theme="'+saved+'"]');
                 if (opt) changeCardTheme(opt, saved);
-            });
+            })();
         </script>
 
         <button onclick="window.location.href = buildUrlWithParams('../12/index.html')" class="button">
